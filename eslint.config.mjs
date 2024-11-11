@@ -1,17 +1,14 @@
-import js from '@eslint/js';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import';
 import prettierPlugin from 'eslint-plugin-prettier';
+import nPlugin from 'eslint-plugin-n';
 
 export default [
   {
     files: ['src/**/*.ts'],
     ignores: ['node_modules/**', 'dist/**'],
     languageOptions: {
-      env: {
-        node: true,
-      },
       parser: typescriptParser,
       parserOptions: {
         ecmaVersion: 'latest',
@@ -23,10 +20,10 @@ export default [
       '@typescript-eslint': typescriptEslint,
       'import': importPlugin,
       'prettier': prettierPlugin,
+      'n': nPlugin,
     },
     rules: {
       // Regras do ESLint, TypeScript e Import
-      ...js.configs.recommended.rules,
       ...typescriptEslint.configs.recommended.rules,
 
       // Regras do Prettier diretamente no ESLint
@@ -41,6 +38,7 @@ export default [
           semi: false,
         },
       ],
+
       // Regras de importação
       'import/order': ['error', {
         'groups': [

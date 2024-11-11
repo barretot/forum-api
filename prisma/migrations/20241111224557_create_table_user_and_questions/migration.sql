@@ -9,19 +9,23 @@ CREATE TABLE "users" (
 );
 
 -- CreateTable
-CREATE TABLE "urls" (
+CREATE TABLE "questions" (
     "id" TEXT NOT NULL,
-    "original_url" TEXT NOT NULL,
-    "shortened_url" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3),
-    "user_id" TEXT NOT NULL,
+    "author_id" TEXT NOT NULL,
 
-    CONSTRAINT "urls_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "questions_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "questions_slug_key" ON "questions"("slug");
+
 -- AddForeignKey
-ALTER TABLE "urls" ADD CONSTRAINT "urls_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "questions" ADD CONSTRAINT "questions_author_id_fkey" FOREIGN KEY ("author_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
