@@ -23,11 +23,18 @@ Content-Type: application/json
 }
 
 ###
-# @name trim-url
-POST {{baseUrl}}/trim-url
+# @name create_question
+POST {{baseUrl}}/questions
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "originalUrl": "https://www.mercadolivre.com.br/parafusadeira-furadeira-de-impacto-profissional-21v-modelo-tb-21px-2-baterias-com-maleta-tb21px-the-black-tools/p/MLB30144703?pdp_filters=deal%3AMLB779362-1#polycard_client=homes-korribanSearchPromotions&wid=MLB4400858714&sid=search&searchVariation=MLB30144703&position=2&search_layout=grid&type=product&tracking_id=1a413ac6-d30e-4d5e-ad14-f4faf11ebb20&c_id=/home/promotions-recommendations/element&c_uid=9356a34b-ee3d-45f7-9bd8-ee2d619c36a9"
+  "title": "New question 2",
+  "content": "Content question"
 }
+
+###
+# @name get_question
+GET {{baseUrl}}/questions?page=2
+Content-Type: application/json
+Authorization: Bearer {{authToken}}

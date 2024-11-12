@@ -6,7 +6,7 @@ import nPlugin from 'eslint-plugin-n';
 
 export default [
   {
-    files: ['src/**/*.ts'],
+    files: ['**/*.spec.ts', '**/*.test.ts', '**/*.e2e-spec.ts'],
     ignores: ['node_modules/**', 'dist/**'],
     languageOptions: {
       parser: typescriptParser,
